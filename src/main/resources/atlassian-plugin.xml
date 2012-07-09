@@ -1,0 +1,34 @@
+<atlassian-plugin key="com.atlassian.bamboo.plugins.clearcase"
+	name="ClearCase UCM Repository">
+	<plugin-info>
+		<description>ClearCase Plugin - Repository, pre and post
+			build actions</description>
+		<version>1.0.0</version>
+		<application-version min="2.6" max="2.6" />
+		<vendor name="Ross Rowe" url="http://confluence.atlassian.com/display/BAMEXT/ClearCase+Repository+plugin" />
+	</plugin-info>
+	<repository key="ccucm" name="ClearCase UCM Repository"
+		class="com.atlassian.bamboo.plugins.clearcase.repository.CcRepository">
+		<description>A ClearCase UCM Repository</description>
+		<resource type="freemarker" name="edit"
+			location="templates/plugins/cc/ccRepositoryEdit.ftl" />
+		<resource type="freemarker" name="view"
+			location="templates/plugins/cc/ccRepositoryView.ftl" />
+	</repository>
+	<preBuildAction key="ccVersion" name="VCS Version Collector"
+		class="com.atlassian.bamboo.plugins.clearcase.vcsversion.VersionWriter">
+		<description>A custom action that reads the identifier of a source
+			repository version and stores it in the custom data map of a build as
+			string in a fixed key for use by post build actions.</description>
+	</preBuildAction>
+	<buildCompleteAction key="ccBaselineLabeller"
+		name="ClearCase Baseline Labeller"
+		class="com.atlassian.bamboo.plugins.clearcase.postbuild.CcBaselineLabeller">
+		<description>Update the ClearCase baseline attributes to reflect
+			result of the build.</description>
+		<resource type="freemarker" name="edit"
+			location="templates/plugins/cc/baselineLabellerEdit.ftl" />
+		<resource type="freemarker" name="view"
+			location="templates/plugins/cc/baselineLabellerView.ftl" />
+	</buildCompleteAction>
+</atlassian-plugin>

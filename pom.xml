@@ -1,0 +1,115 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+      
+    <parent>
+        <groupId>com.atlassian.bamboo.plugins.base</groupId>
+        <artifactId>bamboo-plugin-base</artifactId>
+        <version>10</version>
+        </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.atlassian.bamboo.plugins.clearcase</groupId>
+    <artifactId>clearcase-bamboo</artifactId>
+    <version>1.0.0</version>
+    <name>ClearCase Bamboo Repository</name>
+    <packaging>atlassian-plugin</packaging>
+    <url>http://confluence.atlassian.com/display/BAMBEXT/ClearCase+Repository+plugin</url>
+    <properties>
+        <atlassian.plugin.key>
+			com.atlassian.bamboo.plugin.clearcase
+        </atlassian.plugin.key>
+        <bamboo.version>4.0</bamboo.version>
+        <bamboo.data.version>2.6.1</bamboo.data.version>
+        <atlassian.plugins.version>3.3.1</atlassian.plugins.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <!--plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-bamboo-plugin</artifactId>
+                <version>${atlassian.plugins.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${bamboo.version}</productVersion>
+                    <productDataVersion>${bamboo.data.version}</productDataVersion>
+                    <pluginArtifacts>
+                        
+                        <pluginArtifact>
+                            <groupId>ant</groupId>
+                            <artifactId>ant-optional</artifactId>
+                            <version>1.5.2</version> 
+                        </pluginArtifact>    
+                        </pluginArtifacts>
+                </configuration>
+            </plugin-->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>annotations</artifactId>
+            <version>6.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>ant</groupId>
+            <artifactId>ant-optional</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.bamboo</groupId>
+            <artifactId>atlassian-bamboo-api</artifactId>
+            <version>${bamboo.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.bamboo</groupId>
+            <artifactId>atlassian-bamboo-core</artifactId>
+            <version>${bamboo.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.bamboo</groupId>
+            <artifactId>atlassian-bamboo-web</artifactId>
+            <version>${bamboo.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>atlassian-contrib</id>
+            <name>Atlassian Contrib Repository</name>
+            <url>dav:https://maven.atlassian.com/contrib</url>
+        </repository>
+        <snapshotRepository>
+            <id>atlassian-contrib-snapshot</id>
+            <name>Atlassian Contrib Snapshot Repository</name>
+            <url>dav:https://maven.atlassian.com/contrib-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
